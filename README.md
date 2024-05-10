@@ -11,6 +11,9 @@ The database was built by retriving movie data from The Movie Database
 database consists of 901417 movies and features such as title,
 summary, genre, spoken languages, cast and rating.
 
+An exploratory analysis of the database can be found at
+`predict_ratings/data_processing.ipynb`.
+
 
 ## model training and fine tuning
 
