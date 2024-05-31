@@ -1,7 +1,8 @@
 # movies_and_LLMs
 
-Movie ratings are predicted fine-tuning LLMs movie summaries and
-titles.
+A multi-class text classification using transformers (BERT). Movie
+ratings are predicted fine-tuning a pre-trained BERT model using movie
+titles, summaries and genres.
 
 ## collecting, cleaning, and processing data
 
