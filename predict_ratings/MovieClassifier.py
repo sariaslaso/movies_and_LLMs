@@ -70,7 +70,7 @@ class MovieClassifier:
     def predict(self, title, summary, genre):
         movies = self.__preProcessInput(title, summary, genre)
         tokenized_movies = self.__tokenizeInputs(movies)
-        predictions = self.__modelPredictions(model, tokenized_movies)
+        predictions = self.__modelPredictions(self.model, tokenized_movies)
         pred_ratings = self.__predMovieRating(predictions)
         
         return pred_ratings
