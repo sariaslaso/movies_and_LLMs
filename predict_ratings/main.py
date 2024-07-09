@@ -4,7 +4,7 @@ from pydantic import BaseModel
 import sys
 sys.path.append('..')
 
-import MovieClassifier
+from MovieClassifier import MovieClassifier
 
 model_path = 'model/fine_tuned_BERT'
 tokenizer_path = 'tokenizer'
@@ -28,9 +28,9 @@ class MovieClassifierResponse(BaseModel):
 @app.post("/classifier_post", response_model = MovieClassifierResponse)
 async def test_post(request : MovieClassifierRequest):
 
-	title = MovieClassifierRequest.title
-	summary = MovieClassifierRequest.summary
-	genres = MovieClassifierRequest.genres
+	title =request.title
+	summary = request.summary
+	genres = request.genres
 
 	pred = movie.predict(title, summary, genres)
 
@@ -39,6 +39,4 @@ async def test_post(request : MovieClassifierRequest):
 	return {"ratings": ratings}
 
 
-#'{"a" : "some stuff", "b" : 23}'
-
-#curl -X POST -H "content-type:application/json" "http://0.0.0.0:8000/test_post" -d '{"a" : "some stuff", "b" : 23}'
+# curl -X POST "http://0.0.0.0:7000/classifier_post" -d '{"title" : ["test"], "summary" : ["test"], "genres" : [["blah", "sports"]]}' -H "content-type:application/json
