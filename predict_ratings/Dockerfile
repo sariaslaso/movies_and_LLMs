@@ -7,8 +7,8 @@ WORKDIR /code
 COPY ./requirements.txt /code/requirements.txt
 
 # copy the model, tokenizer and classifier class to the "/code" directory
-COPY ./model/fine_tuned_BERT/ /code/fine_tuned_BERT
-COPY ./tokenizer /code/tokenizer/
+COPY ./model/fine_tuned_BERT/ /code/fine_tuned_BERT/
+COPY ./tokenizer/ /code/tokenizer/
 COPY ./MovieClassifier.py /code/MovieClassifier.py
 
 
