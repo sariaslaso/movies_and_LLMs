@@ -6,14 +6,12 @@ WORKDIR /code
 # copy the file with the requirements to the "/code" directory
 COPY ./requirements.txt /code/requirements.txt
 
-# copy the model, tokenizer and classifier class to the "/code" directory
-COPY ./model/fine_tuned_BERT/ /code/fine_tuned_BERT/
-COPY ./tokenizer/ /code/tokenizer/
-COPY ./MovieClassifier.py /code/MovieClassifier.py
-
-
 # install the package dependencies in the requirements.txt file
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
+
+# copy the model, tokenizer and classifier class to the "/code" directory
+COPY ./model/fine_tuned_BERT/ /code/model/fine_tuned_BERT/
+COPY ./MovieClassifier.py /code/MovieClassifier.py
 
 
 # copy the app directory inside the /code directory

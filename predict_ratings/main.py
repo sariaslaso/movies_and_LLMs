@@ -6,13 +6,11 @@ sys.path.append('..')
 
 from MovieClassifier import MovieClassifier
 
-model_path = 'model/fine_tuned_BERT'
-tokenizer_path = 'tokenizer'
-
+model_path = './model/fine_tuned_BERT'
 
 app = FastAPI()
 
-movie = MovieClassifier(model_path, tokenizer_path)
+movie = MovieClassifier(model_path)
 
 class MovieClassifierRequest(BaseModel):
 
@@ -24,6 +22,11 @@ class MovieClassifierResponse(BaseModel):
 
 	ratings : list[str]
 
+
+@app.get("/status", response_model = dict[str, str])
+async def health_check():
+
+	return {"working" : "yes"}
 
 @app.post("/classifier_post", response_model = MovieClassifierResponse)
 async def test_post(request : MovieClassifierRequest):
@@ -39,4 +42,4 @@ async def test_post(request : MovieClassifierRequest):
 	return {"ratings": ratings}
 
 
-# curl -X POST "http://0.0.0.0:7000/classifier_post" -d '{"title" : ["test"], "summary" : ["test"], "genres" : [["blah", "sports"]]}' -H "content-type:application/json
+# curl -X POST "http://0.0.0.0:80/classifier_post" -d '{"title" : ["test"], "summary" : ["test"], "genres" : [["blah", "sports"]]}' -H "content-type:application/json" | python3 -m json.tool
