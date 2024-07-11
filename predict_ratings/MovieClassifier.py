@@ -10,9 +10,9 @@ class MovieClassifier:
     ratings = ['bad', 'average', 'good']
 
     # initialize the model and tokenizer
-    def __init__(self, model_path, tokenizer_path):
+    def __init__(self, model_path):
         self.model = AutoModelForSequenceClassification.from_pretrained(model_path)
-        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_path)
         
     def __preProcessInput(self, titles, summaries, genres):
     # titles: list of strings in the form: [title_1, title_2, ...]
