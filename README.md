@@ -24,5 +24,11 @@ The training script can be found at `predict_ratings/train_script.ipynb`.
 
 ## FastAPI and Docker container
 
-
-
+A Docker image of the application can be built using the files `MovieClassifier.py`, `main.py`, `Dockerfile`, and `requirements.txt` which can be found at `predict_ratings/`. A server can be run using the command
+```
+docker run -d --name movie_ratings_container -p 80:80 movie_ratings_image
+```
+and to test the model one can run the request
+```
+curl -X POST "http://0.0.0.0:80/classifier_post" -d '{"title" : ["test"], "summary" : ["test"], "genres" : [["blah", "sports"]]}' -H "content-type:application/json" | python3 -m json.tool
+```
