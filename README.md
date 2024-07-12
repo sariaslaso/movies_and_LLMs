@@ -30,5 +30,5 @@ docker run -d --name movie_ratings_container -p 80:80 movie_ratings_image
 ```
 and to test the model one can run the request
 ```
-curl -X POST "http://0.0.0.0:80/classifier_post" -d '{"title" : ["test"], "summary" : ["test"], "genres" : [["blah", "sports"]]}' -H "content-type:application/json" | python3 -m json.tool
+curl -X POST "http://0.0.0.0:80/classifier_post" -d '{"title" : ["test_title"], "summary" : ["test_summary"], "genres" : [["genre1", "genre2"]]}' -H "content-type:application/json" | python3 -m json.tool
 ```
