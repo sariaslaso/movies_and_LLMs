@@ -22,7 +22,7 @@ The LLM was fine-tuned with the PyTorch [Trainer](https://huggingface.co/docs/tr
 
 The training script can be found at `predict_ratings/train_script.ipynb`.
 
-## hugging face app
+## Hugging Face app
 
 A UI of the model can be found [here](https://huggingface.co/spaces/sariaslaso/movies_LLMs_gradio), a gradio app integrated with Hugging Face Hub.
 
